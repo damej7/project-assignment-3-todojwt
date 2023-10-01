@@ -10,6 +10,7 @@ class TodoService
 {
 
   protected $todoRepository;
+  protected $users;
 
   public function __construct(TodoRepository $todoRepository)
   {
@@ -44,10 +45,22 @@ class TodoService
     return $todo;
   }
 
+  public function addUser(array $data)
+  {
+    $user = $this->todoRepository->createUser($data);
+    return $user;
+  }
+
   public function getById(string $todoId)
   {
     $todo = $this->todoRepository->getById($todoId);
     return $todo;
+  }
+
+  public function getEmail(string $userEmail)
+  {
+    $email = $this->todoRepository->getEmail($userEmail);
+    return $email;
   }
 
   public function updateTodo(array $editTodo, array $formData)
